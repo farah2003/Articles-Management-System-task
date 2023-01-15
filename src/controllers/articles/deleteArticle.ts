@@ -12,7 +12,10 @@ export const deleteArticle = async (
     const { articleId } = DTO.ParamsId(param);
     const { email: userEmail } = request.app.get('userData');
     console.log(articleId);
-    const { rows } = await ifArticleEXist(articleId);
+    const { rows, rowCount } = await ifArticleEXist(articleId);
+    if (!rowCount) {
+      throw CustomError("Article is't exist", 400);
+    }
     const autherArticleEmail = rows[0].email;
 
     if (autherArticleEmail !== userEmail) {

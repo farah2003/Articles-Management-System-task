@@ -23,14 +23,14 @@ CREATE TABLE comments(
   created_by INT NOT NULL,
   article_id INT NOT NULL,
   FOREIGN KEY (created_by) REFERENCES users(id),
-  FOREIGN KEY (article_id) REFERENCES articles(id)
+  FOREIGN KEY (article_id) REFERENCES articles(id)ON DELETE CASCADE
 );
 CREATE TABLE ratings(
   scoring_by INT NOT NULL,
   article_id INT NOT NULL,
   rating FLOAT NOT NULL,
   FOREIGN KEY (scoring_by) REFERENCES users(id),
-  FOREIGN KEY (article_id) REFERENCES articles(id),
+  FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE,
   PRIMARY KEY(scoring_by,article_id)
 );
 
