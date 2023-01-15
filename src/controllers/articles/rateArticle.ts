@@ -26,7 +26,6 @@ export const rateArticle = async (
     }
 
     const { rowCount: ratedArticle } = await isUserRateArtilce(articleId, id);
-    console.log(rowCount, ratedArticle);
     if (ratedArticle) {
       throw CustomError('you already rate this article', 400);
     }

@@ -40,5 +40,10 @@ route.post(
   rateArticle
 );
 
-route.delete('/article/:articleId', validator.params(articleId), deleteArticle);
+route.delete(
+  '/article/:articleId',
+  checkUserRules(),
+  validator.params(articleId),
+  deleteArticle
+);
 export default route;

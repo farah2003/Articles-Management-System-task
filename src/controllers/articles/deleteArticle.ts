@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { DTO, CustomError } from '../../helpers';
-import { deleteArticleDB } from '../../queries';
+import { deleteArticleDB, ifArticleEXist } from '../../queries';
+
 export const deleteArticle = async (
   request: Request,
   response: Response,
@@ -8,12 +9,21 @@ export const deleteArticle = async (
 ): Promise<void> => {
   try {
     const param = DTO.paramsData(request);
-    const articleId: number = param.articleId as number;
-    const rows = await deleteArticleDB(articleId);
+    const { articleId } = DTO.ParamsId(param);
+    const { email: userEmail } = request.app.get('userData');
+    console.log(articleId);
+    const { rows } = await ifArticleEXist(articleId);
+    const autherArticleEmail = rows[0].email;
 
+    if (autherArticleEmail !== userEmail) {
+      throw CustomError('Unautharized  user', 400);
+    }
+    const data = await deleteArticleDB(articleId);
     response.json({
-      name: 'Rating article successful',
-      rows,
+      name: 'delete article successful',
+      userEmail,
+      autherArticleEmail: rows,
+      data,
     });
   } catch (error) {
     next(error);

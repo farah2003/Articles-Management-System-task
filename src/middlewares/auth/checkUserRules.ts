@@ -11,7 +11,6 @@ export const checkUserRules = () => {
   ): Promise<void> => {
     try {
       const { token } = request.cookies;
-      console.log(token, 'tokennnnnnnnnnnn');
       if (!token) throw CustomError('Unauthorized', 401);
       /// id or email
       const userPayload = (await verifyToken(token)) as Auth.Payload;
