@@ -14,6 +14,8 @@ const s3 = new AWS.S3({
 });
 
 export const uploadFile = async (file: any): Promise<any> => {
+  console.log(file);
+
   const fileStream = fs.createReadStream(file.path);
   try {
     const result = await s3
@@ -26,6 +28,8 @@ export const uploadFile = async (file: any): Promise<any> => {
     console.log(
       'Successfully uploaded data to ' + 'farahawsbucket' + '/' + 'keyName'
     );
+    console.log(result);
+
     return result;
   } catch (error) {
     console.log(error);

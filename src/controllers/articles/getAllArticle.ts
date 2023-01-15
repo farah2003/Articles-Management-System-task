@@ -9,7 +9,6 @@ export const getallArticles = async (
   try {
     const query = DTO.queryData(request);
     const { page, limit } = DTO.pagination(query);
-    console.log(page);
     const { rows } = await getAllArticles(limit, page - 1);
     response.json({ message: 'Get articles successful', rows });
   } catch (error) {
