@@ -16,7 +16,6 @@ export const rateArticle = async (
     const body = DTO.bodyData(request);
     const { articleId } = DTO.ParamsId(param);
     const { rating } = DTO.articleRating(body);
-    console.log(articleId);
 
     const { id } = request.app.get('userData');
 
