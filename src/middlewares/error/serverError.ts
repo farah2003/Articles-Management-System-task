@@ -7,7 +7,6 @@ export const serverError = (
   response: Response,
   _next: NextFunction
 ): Response => {
-  console.log(error, 'error2');
   return response.status(error.statusCode || 500).json({
     status: error.statusCode || 500,
     message: error.message,

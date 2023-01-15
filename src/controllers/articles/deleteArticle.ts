@@ -11,7 +11,6 @@ export const deleteArticle = async (
     const param = DTO.paramsData(request);
     const { articleId } = DTO.ParamsId(param);
     const { email: userEmail } = request.app.get('userData');
-    console.log(articleId);
     const { rows, rowCount } = await ifArticleEXist(articleId);
     if (!rowCount) {
       throw CustomError("Article is't exist", 400);

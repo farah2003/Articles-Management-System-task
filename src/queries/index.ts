@@ -8,6 +8,7 @@ import articleRating from './articles/addArticleRating';
 import ifArticleEXist from './articles/checkIfArticleExist';
 import isUserRateArtilce from './articles/IsUserRateCarticle';
 import deleteArticleDB from './articles/deleteArticle';
+import editArtileDB from './articles/editAricle';
 export {
   addNewUser,
   hasEmailExist,
@@ -19,4 +20,5 @@ export {
   ifArticleEXist,
   isUserRateArtilce,
   deleteArticleDB,
+  editArtileDB,
 };

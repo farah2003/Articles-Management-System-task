@@ -8,6 +8,7 @@ import {
   paginationSchema,
   articleRatingSchema,
   articleId,
+  modifiedArticleSchema,
 } from '../validations';
 import { validator } from './../helpers/validation/validate';
 import {
@@ -17,6 +18,7 @@ import {
   getallArticles,
   rateArticle,
   deleteArticle,
+  editArticle,
 } from './../controllers';
 
 const route = Router();
@@ -45,5 +47,12 @@ route.delete(
   checkUserRules(),
   validator.params(articleId),
   deleteArticle
+);
+route.patch(
+  '/article/',
+  upload.single('image'),
+  checkUserRules(),
+  validator.body(modifiedArticleSchema),
+  editArticle
 );
 export default route;

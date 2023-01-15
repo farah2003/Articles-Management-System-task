@@ -1,3 +1,4 @@
+import { editArticle } from './articles/editArticle';
 import { rateArticle } from './articles/rateArticle';
 import { getallArticles } from './articles/getAllArticle';
 import { login } from './auth/logIn';
@@ -12,4 +13,5 @@ export {
   getallArticles,
   rateArticle,
   deleteArticle,
+  editArticle,
 };
