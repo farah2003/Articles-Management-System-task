@@ -6,6 +6,6 @@ export default (
 ): Promise<any> => {
   return connection.query(
     'INSERT INTO  ratings (scoring_by,article_id,rating) VALUES($1,$2,$3) RETURNING *',
-    [1, 2, 2.5]
+    [userId, articleId, rating]
   );
 };

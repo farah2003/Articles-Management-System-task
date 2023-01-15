@@ -14,7 +14,7 @@ export const rateArticle = async (
   try {
     const param = DTO.paramsData(request);
     const body = DTO.bodyData(request);
-    const { userId, articleId } = DTO.ParamsId(param);
+    const { articleId } = DTO.ParamsId(param);
     const { rating } = DTO.articleRating(body);
     console.log(articleId);
 
@@ -24,11 +24,13 @@ export const rateArticle = async (
     if (!rowCount) {
       throw CustomError("The article doesn't exist", 400);
     }
+
     const { rowCount: ratedArticle } = await isUserRateArtilce(articleId, id);
+    console.log(rowCount, ratedArticle);
     if (ratedArticle) {
       throw CustomError('you already rate this article', 400);
     }
-    const { rows } = await articleRating(rating, userId, articleId);
+    const { rows } = await articleRating(rating, id, articleId);
     response.json({
       name: 'Rating article successful',
       rows,

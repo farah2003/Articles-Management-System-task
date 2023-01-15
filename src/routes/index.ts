@@ -33,7 +33,7 @@ route.post(
 
 route.get('/articles', validator.query(paginationSchema), getallArticles);
 route.post(
-  '/article-rating/:userId/:articleId',
+  '/article-rating/:articleId',
   validator.params(paramsIdSchema),
   validator.body(articleRatingSchema),
   checkUserRules(),
