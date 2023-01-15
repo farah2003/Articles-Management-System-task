@@ -19,7 +19,6 @@ export const editArticle = async (
       throw CustomError("Article is't exist", 400);
     }
     const autherArticleEmail = rows[0].email;
-    console.log(userEmail, autherArticleEmail);
     if (autherArticleEmail !== userEmail) {
       throw CustomError('Unautharized  user', 400);
     }
