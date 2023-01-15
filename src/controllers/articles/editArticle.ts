@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { editArtileDB, ifArticleEXist } from '../../queries';
+import { editArtileDB, getArticleById } from '../../queries';
 import { CustomError, DTO, uploadFile } from '../../helpers';
 export const editArticle = async (
   request: Request,
@@ -14,7 +14,7 @@ export const editArticle = async (
     const { Location: location } = await uploadFile(request?.file);
 
     const { email: userEmail } = request.app.get('userData');
-    const { rows, rowCount } = await ifArticleEXist(id);
+    const { rows, rowCount } = await getArticleById(id);
     if (!rowCount) {
       throw CustomError("Article is't exist", 400);
     }

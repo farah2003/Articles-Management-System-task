@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { DTO, CustomError } from '../../helpers';
-import { deleteArticleDB, ifArticleEXist } from '../../queries';
+import { deleteArticleDB, getArticleById } from '../../queries';
 
 export const deleteArticle = async (
   request: Request,
@@ -11,7 +11,7 @@ export const deleteArticle = async (
     const param = DTO.paramsData(request);
     const { articleId } = DTO.ParamsId(param);
     const { email: userEmail } = request.app.get('userData');
-    const { rows, rowCount } = await ifArticleEXist(articleId);
+    const { rows, rowCount } = await getArticleById(articleId);
     if (!rowCount) {
       throw CustomError("Article is't exist", 400);
     }

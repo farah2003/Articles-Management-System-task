@@ -3,8 +3,8 @@ import { DTO, CustomError } from '../../helpers';
 
 import {
   articleRating,
-  ifArticleEXist,
-  isUserRateArtilce,
+  getArticleById,
+  userRatingArticle,
 } from '../../queries';
 export const rateArticle = async (
   request: Request,
@@ -19,12 +19,12 @@ export const rateArticle = async (
 
     const { id } = request.app.get('userData');
 
-    const { rowCount } = await ifArticleEXist(articleId);
+    const { rowCount } = await getArticleById(articleId);
     if (!rowCount) {
       throw CustomError("The article doesn't exist", 400);
     }
 
-    const { rowCount: ratedArticle } = await isUserRateArtilce(articleId, id);
+    const { rowCount: ratedArticle } = await userRatingArticle(articleId, id);
     if (ratedArticle) {
       throw CustomError('you already rate this article', 400);
     }

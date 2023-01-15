@@ -5,8 +5,8 @@ import getUserByEmail from './auth/getUserByEmail';
 import getUserById from './auth/getUserById';
 import getAllArticles from './articles/getAllArticles';
 import articleRating from './articles/addArticleRating';
-import ifArticleEXist from './articles/checkIfArticleExist';
-import isUserRateArtilce from './articles/IsUserRateCarticle';
+import getArticleById from './articles/getArticleById';
+import userRatingArticle from './articles/userRatingArticle';
 import deleteArticleDB from './articles/deleteArticle';
 import editArtileDB from './articles/editAricle';
 export {
@@ -17,8 +17,8 @@ export {
   addArticleDB,
   getAllArticles,
   articleRating,
-  ifArticleEXist,
-  isUserRateArtilce,
+  getArticleById,
+  userRatingArticle,
   deleteArticleDB,
   editArtileDB,
 };

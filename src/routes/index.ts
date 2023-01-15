@@ -49,7 +49,7 @@ route.delete(
   deleteArticle
 );
 route.patch(
-  '/article/',
+  '/article',
   upload.single('image'),
   checkUserRules(),
   validator.body(modifiedArticleSchema),
