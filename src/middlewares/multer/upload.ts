@@ -3,7 +3,6 @@ import multer from 'multer';
 export const upload = multer({
   dest: 'upload/',
   fileFilter: (req, file: any, cb) => {
-    console.log('fillllll', file);
     if (!(file.fieldname === 'image')) {
       cb(new Error(' image is required.'));
     }

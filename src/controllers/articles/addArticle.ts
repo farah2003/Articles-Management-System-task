@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { addArticleDB } from '../../queries';
-import { DTO, uploadFile, sendEmail } from '../../helpers';
-import { template } from './../../template/index';
+import { DTO, uploadFile } from '../../helpers';
 
 export const addArticle = async (
   request: Request,
@@ -21,11 +20,7 @@ export const addArticle = async (
       email,
       auther
     );
-    await sendEmail(
-      email,
-      { firstName: auther, message: 'artical added ' },
-      template
-    );
+
     response.json({ message: 'Article added successful', rows });
   } catch (error) {
     next(error);

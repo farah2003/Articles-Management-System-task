@@ -1,5 +1,9 @@
 import app from '../app';
+import config from '../config';
+const {
+  system: { port },
+} = config;
 
-app.listen(7000, () => {
-  console.log('app is listing in https://localhost:5000');
+app.listen(port, () => {
+  console.log(`App is listening in https://localhost:${port}`);
 });

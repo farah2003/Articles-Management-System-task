@@ -6,6 +6,8 @@ import cors from 'cors';
 import morgan from 'morgan';
 import route from './routes';
 import { notFoundError } from './middlewares';
+///express is a function
+/// app return express() return objrct of type express
 const app: Application = express();
 
 app.use([
